@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoTech Pro | Taller Mecánico Premium</title>
+    <meta name="description" content="Taller mecánico de alta tecnología. Diagnóstico computarizado, servicio premium y atención profesional.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#050505',
+                        'bg-secondary': '#0a0a0a',
+                        'bg-card': '#111111',
+                        fg: '#ffffff',
+                        muted: '#888888',
+                        accent: '#ff4500',
+                        'accent-light': '#ff6b35',
+                        'accent-glow': '#ff450050',
+                        cyan: '#00d4ff',
+                        'cyan-glow': '#00d4ff30',
+                    },
+                    fontFamily: {
+                        display: ['Orbitron', 'sans-serif'],
+                        body: ['Rajdhani', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <svg class="loader-gear" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1">
+            <circle cx="50" cy="50" r="35"/>
+            <circle cx="50" cy="50" r="15"/>
+            <path d="M50 5 L55 15 L45 15 Z"/>
+            <path d="M50 95 L55 85 L45 85 Z"/>
+            <path d="M5 50 L15 45 L15 55 Z"/>
+            <path d="M95 50 L85 45 L85 55 Z"/>
+            <path d="M18 18 L28 22 L22 28 Z"/>
+            <path d="M82 82 L72 78 L78 72 Z"/>
+            <path d="M18 82 L22 72 L28 78 Z"/>
+            <path d="M82 18 L78 28 L72 22 Z"/>
+        </svg>
+        <svg class="loader-gear" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1">
+            <circle cx="50" cy="50" r="35"/>
+            <circle cx="50" cy="50" r="15"/>
+            <path d="M50 5 L55 15 L45 15 Z"/>
+            <path d="M50 95 L55 85 L45 85 Z"/>
+            <path d="M5 50 L15 45 L15 55 Z"/>
+            <path d="M95 50 L85 45 L85 55 Z"/>
+            <path d="M18 18 L28 22 L22 28 Z"/>
+            <path d="M82 82 L72 78 L78 72 Z"/>
+            <path d="M18 82 L22 72 L28 78 Z"/>
+            <path d="M82 18 L78 28 L72 22 Z"/>
+        </svg>
+        
+        <div class="loader-logo">AUTOTECH</div>
+        <div class="loader-bar-container">
+            <div class="loader-bar" id="loader-bar"></div>
+        </div>
+        <div class="loader-text">Cargando experiencia</div>
+    </div>
+    
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+    
+    <!-- Particles Canvas -->
+    <canvas id="particles-canvas"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <a href="#" class="nav-logo">AUTO<span>TECH</span></a>
+        <ul class="nav-links">
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <a href="#contacto" class="nav-cta">Agendar Cita</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <button class="mobile-menu-close" id="mobile-close" aria-label="Cerrar menu">X</button>
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#contacto">Contacto</a>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+        
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+                Taller Mecanico Premium
+            </div>
+            <h1 class="hero-title">
+                Reparamos Tu Auto<br>
+                <span class="accent">Como Si Fuera Nuestro</span>
+            </h1>
+            <p class="hero-subtitle">
+                Tecnologia de vanguardia, tecnicos certificados y pasion por los autos. 
+                Tu vehiculo merece lo mejor.
+            </p>
+            <div class="hero-buttons">
+                <a href="#contacto" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    Agendar Servicio
+                </a>
+                <a href="https://wa.me/1234567890" class="btn btn-secondary" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    WhatsApp
+                </a>
+            </div>
+        </div>
+        
+        <div class="hero-scroll">
+            <div class="scroll-indicator">
+                <div class="scroll-dot"></div>
+            </div>
+            Scroll
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="section" id="servicios">
+        <div class="section-header reveal">
+            <div class="section-tag">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+                Nuestros Servicios
+            </div>
+            <h2 class="section-title">Soluciones Integrales<br>Para Tu Vehiculo</h2>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card" data-delay="0">
+                <span class="service-number">01</span>
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Diagnostico Computarizado</h3>
+                <p class="service-desc">Escaneo completo con equipo de ultima generacion para detectar fallas en todos los sistemas electronicos del vehiculo.</p>
+            </div>
+            
+            <div class="service-card" data-delay="1">
+                <span class="service-number">02</span>
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Cambio de Aceite</h3>
+                <p class="service-desc">Servicio rapido con aceites de alta calidad. Incluye revision de niveles y estado general del motor.</p>
+            </div>
+            
+            <div class="service-card" data-delay="2">
+                <span class="service-number">03</span>
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Frenos</h3>
+                <p class="service-desc">Cambio de pastillas, discos y liquido de frenos. Revision completa del sistema de frenado para tu seguridad.</p>
+            </div>
+            
+            <div class="service-card" data-delay="3">
+                <span class="service-number">04</span>
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Suspension</h3>
+                <p class="service-desc">Amortiguadores, resortes, rotulas y terminales. Recupera la estabilidad y confort de manejo.</p>
+            </div>
+            
+            <div class="service-card" data-delay="4">
+                <span class="service-number">05</span>
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Electricidad Automotriz</h3>
+                <p class="service-desc">Diagnostico y reparacion de sistemas electricos, baterias, alternadores, marcha y cableado completo.</p>
+            </div>
+            
+            <div class="service-card" data-delay="5">
+                <span class="service-number">06</span>
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Aire Acondicionado</h3>
+                <p class="service-desc">Carga de gas, reparacion de compresor, limpieza de conductos. Mantenimiento completo del sistema AC.</p>
+            </div>
+            
+            <div class="service-card" data-delay="6">
+                <span class="service-number">07</span>
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Reparacion de Motor</h3>
+                <p class="service-desc">Desde ajustes menores hasta reconstruccion completa. Tecnicos especializados en todas las marcas.</p>
+            </div>
+            
+            <div class="service-card" data-delay="7">
+                <span class="service-number">08</span>
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                    </svg>
+                </div>
+                <h3 class="service-title">Mantenimiento General</h3>
+                <p class="service-desc">Servicio completo de mantenimiento preventivo. Filtros, bujias, liquidos y revision de todos los sistemas.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section class="section stats-section" id="nosotros">
+        <div class="section-header reveal">
+            <div class="section-tag">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 20V10"/>
+                    <path d="M18 20V4"/>
+                    <path d="M6 20v-4"/>
+                </svg>
+                Nuestra Experiencia
+            </div>
+            <h2 class="section-title">Numeros Que Hablan<br>Por Nosotros</h2>
+        </div>
+        
+        <div class="stats-container">
+            <div class="stat-card" data-target="15000" data-suffix="+">
+                <div class="stat-number">
+                    <span class="stat-value">0</span>
+                    <span class="stat-suffix">+</span>
+                </div>
+                <div class="stat-label">Autos Reparados</div>
+            </div>
+            
+            <div class="stat-card" data-target="8500" data-suffix="+">
+                <div class="stat-number">
+                    <span class="stat-value">0</span>
+                    <span class="stat-suffix">+</span>
+                </div>
+                <div class="stat-label">Clientes Satisfechos</div>
+            </div>
+            
+            <div class="stat-card" data-target="15" data-suffix="">
+                <div class="stat-number">
+                    <span class="stat-value">0</span>
+                    <span class="stat-suffix"></span>
+                </div>
+                <div class="stat-label">Anos de Experiencia</div>
+            </div>
+            
+            <div class="stat-card" data-target="25000" data-suffix="+">
+                <div class="stat-number">
+                    <span class="stat-value">0</span>
+                    <span class="stat-suffix">+</span>
+                </div>
+                <div class="stat-label">Servicios Realizados</div>
+            </div>
+        </div>
+        
+        <!-- Speedometer -->
+        <div class="speedometer-section">
+            <div class="speedometer-container">
+                <svg class="speedometer" viewBox="0 0 400 400">
+                    <defs>
+                        <linearGradient id="speedGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#ff4500"/>
+                            <stop offset="50%" style="stop-color:#ff6b35"/>
+                            <stop offset="100%" style="stop-color:#00d4ff"/>
+                        </linearGradient>
+                    </defs>
+                    <circle class="speedometer-bg" cx="200" cy="200" r="180"/>
+                    <circle class="speedometer-progress" id="speedometer-progress" cx="200" cy="200" r="180"/>
+                </svg>
+                
+                <div class="speedometer-center">
+                    <div class="speedometer-value" id="speed-value">0</div>
+                    <div class="speedometer-label">Indice de Satisfaccion</div>
+                </div>
+                
+                <div class="speedometer-info">
+                    <div class="speedometer-info-item">
+                        <div class="speedometer-info-value">98%</div>
+                        <div class="speedometer-info-label">Satisfaccion</div>
+                    </div>
+                    <div class="speedometer-info-item">
+                        <div class="speedometer-info-value">24/7</div>
+                        <div class="speedometer-info-label">Soporte</div>
+                    </div>
+                    <div class="speedometer-info-item">
+                        <div class="speedometer-info-value">100%</div>
+                        <div class="speedometer-info-label">Garantia</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section class="section gallery-section" id="galeria">
+        <div class="section-header reveal">
+            <div class="section-tag">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <polyline points="21 15 16 10 5 21"/>
+                </svg>
+                Nuestro Trabajo
+            </div>
+            <h2 class="section-title">Galeria de Proyectos</h2>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=80" alt="Motor deportivo restaurado">
+                <div class="gallery-overlay">
+                    <div class="gallery-title">Restauracion de Motor Deportivo</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Sistema de frenos">
+                <div class="gallery-overlay">
+                    <div class="gallery-title">Sistema de Frenos Premium</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=600&q=80" alt="Suspension deportiva">
+                <div class="gallery-overlay">
+                    <div class="gallery-title">Instalacion de Suspension</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=600&q=80" alt="Diagnostico computarizado">
+                <div class="gallery-overlay">
+                    <div class="gallery-title">Diagnostico Avanzado</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&q=80" alt="Motor clasico">
+                <div class="gallery-overlay">
+                    <div class="gallery-title">Motor Clasico Restaurado</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="section testimonials-section">
+        <div class="section-header reveal">
+            <div class="section-tag">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+                Testimonios
+            </div>
+            <h2 class="section-title">Lo Que Dicen<br>Nuestros Clientes</h2>
+        </div>
+        
+        <div class="testimonials-slider">
+            <div class="testimonial-card">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-stars">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <p class="testimonial-text">Increible servicio. Mi auto tenia un problema electrico que otros talleres no pudieron resolver. Aqui lo diagnosticaron y repararon en un dia. 100% recomendados.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">MR</div>
+                    <div>
+                        <div class="testimonial-name">Miguel Rodriguez</div>
+                        <div class="testimonial-role">BMW Serie 3</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-stars">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <p class="testimonial-text">Llevo mi auto hace 5 anos y siempre quedo satisfecha. Honestos, profesionales y precios justos. No lo cambio por nada.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">CG</div>
+                    <div>
+                        <div class="testimonial-name">Carolina Gonzalez</div>
+                        <div class="testimonial-role">Honda Civic</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-stars">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <p class="testimonial-text">La mejor atencion. Me explicaron todo lo que le hicieron a mi camioneta y me mostraron las piezas cambiadas. Transparencia total.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">JP</div>
+                    <div>
+                        <div class="testimonial-name">Juan Perez</div>
+                        <div class="testimonial-role">Toyota Hilux</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-quote">"</div>
+                <div class="testimonial-stars">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <p class="testimonial-text">Tenia problemas con el aire acondicionado y lo solucionaron rapidamente. Excelente precio y atencion. Muy profesionales.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">AL</div>
+                    <div>
+                        <div class="testimonial-name">Ana Lopez</div>
+                        <div class="testimonial-role">Mazda 3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contacto">
+        <div class="contact-container">
+            <div class="contact-info reveal">
+                <h2 class="contact-info-title">Agenda Tu<br>Cita Ahora</h2>
+                <p class="contact-info-text">
+                    Complete el formulario y nos pondremos en contacto con usted 
+                    para confirmar su cita. Tambien puede contactarnos directamente 
+                    por telefono o WhatsApp.
+                </p>
+                
+                <div class="contact-item">
+                    <div class="contact-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="contact-item-label">Direccion</div>
+                        <div class="contact-item-text">Av. Principal #123, Centro</div>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="contact-item-label">Telefono</div>
+                        <div class="contact-item-text">+1 (234) 567-8900</div>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="contact-item-label">Horario</div>
+                        <div class="contact-item-text">Lun - Sab: 8:00 - 18:00</div>
+                    </div>
+                </div>
+            </div>
+            
+            <form class="contact-form reveal" id="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" class="form-input" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="telefono">Telefono</label>
+                        <input type="tel" id="telefono" class="form-input" placeholder="+1 234 567 8900" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="vehiculo">Vehiculo</label>
+                        <input type="text" id="vehiculo" class="form-input" placeholder="Marca y modelo" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="servicio">Tipo de Servicio</label>
+                        <select id="servicio" class="form-input form-select" required>
+                            <option value="">Seleccionar servicio</option>
+                            <option value="diagnostico">Diagnostico Computarizado</option>
+                            <option value="aceite">Cambio de Aceite</option>
+                            <option value="frenos">Frenos</option>
+                            <option value="suspension">Suspension</option>
+                            <option value="electricidad">Electricidad Automotriz</option>
+                            <option value="ac">Aire Acondicionado</option>
+                            <option value="motor">Reparacion de Motor</option>
+                            <option value="mantenimiento">Mantenimiento General</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="fecha">Fecha Preferida</label>
+                    <input type="date" id="fecha" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="mensaje">Mensaje Adicional</label>
+                    <textarea id="mensaje" class="form-input form-textarea" placeholder="Describe el problema o servicio que necesitas..."></textarea>
+                </div>
+                
+                <button type="submit" class="form-submit">
+                    Solicitar Servicio
+                </button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Map Section -->
+    <section class="map-section">
+        <iframe 
+            class="map-container"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.661446025757!2d-99.16869068509424!3d19.427023686884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff35f5bd1563%3A0x6c366f0e2de02ff7!2sMexico%20City%2C%20CDMX%2C%20Mexico!5e0!3m2!1sen!2sus!4v1640000000000!5m2!1sen!2sus"
+            allowfullscreen=""
+            loading="lazy"
+            title="Ubicacion del taller">
+        </iframe>
+        <div class="map-overlay"></div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div>
+                <div class="footer-brand">AUTO<span>TECH</span></div>
+                <p class="footer-desc">
+                    Tu taller de confianza con tecnologia de vanguardia 
+                    y tecnicos altamente calificados. Calidad y garantia en cada servicio.
+                </p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="footer-title">Servicios</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Diagnostico</a></li>
+                    <li><a href="#">Cambio de Aceite</a></li>
+                    <li><a href="#">Frenos</a></li>
+                    <li><a href="#">Suspension</a></li>
+                    <li><a href="#">Electricidad</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="footer-title">Empresa</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Nuestro Equipo</a></li>
+                    <li><a href="#">Trabaja con Nosotros</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="footer-title">Soporte</h4>
+                <ul class="footer-links">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Garantia</a></li>
+                    <li><a href="#">Politica de Privacidad</a></li>
+                    <li><a href="#">Terminos de Servicio</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-copyright">
+                2024 AutoTech Pro. Todos los derechos reservados.
+            </div>
+            <div class="footer-copyright">
+                Diseno con pasion por la excelencia automotriz.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/1234567890" class="whatsapp-btn" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <script src="app.js"></script>
+</body>
+</html>
