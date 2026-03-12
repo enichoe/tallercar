@@ -2004,3 +2004,14 @@
             transform: scale(1);
         }
     }
+
+
+    .netowebs-link{
+color:#ff3c3c;
+text-decoration:none;
+font-weight:bold;
+}
+
+.netowebs-link:hover{
+text-decoration:underline;
+}
